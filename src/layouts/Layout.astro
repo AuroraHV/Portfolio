@@ -1,3 +1,7 @@
+---
+import KeepScrolling from "@/assets/keep-scrolling.svg"
+---
+<!--Layout.astro lo común a todas las páginas -->
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,18 +9,94 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Portfolio AuroraHV</title>
 	</head>
 	<body>
+		<!-- hola (saldría encima de lo que pone en index.astro) -->
+
+		<!-- layout (index.astro) = slot, todo lo que salga aquí
+		 es un layout del index.astro donde se indica cuantas veces se repetirá -->
 		<slot />
+		<!--Para que esté en toda la página -->
+		<KeepScrolling class="fixed bottom-3 right-0 left-0 mx-auto text-pink-300 drop-shadow-2xl animate-bounce-pulse"/>
 	</body>
 </html>
 
-<style>
+<!--Se crea animación -->
+<style is:global>
+	
+	@import "tailwindcss";
+
+	@theme {
+		--font-sans: "GTA", system-ui, sans-serif;
+		--font-narrow: "GTANarrow", system-ui, sans-serif;
+
+		--animate-bounce-pulse: bounce-pulse 2s ease-in-out infinite; 
+	}
+
+	@keyframes bounce-pulse {
+		0% {
+		transform: translateY(0);
+		scale: 0.8;
+		opacity: 0.8;
+		}
+
+		50% {
+		transform: translateY(-5px);
+		opacity: 1;
+		scale: 1;
+		}
+
+		100% {
+		transform: translateY(0);
+		scale: 0.8;
+		opacity: 0.8;
+		}
+  	}
+
+
+
 	html,
 	body {
+		background: #111;
+		height: 300vh; /* 300 unidades de altura de la ventana del navegador (porque son 3 secciones) */
+		overflow-x: hidden; /* no scroll horizontal */
+		overscroll-behavior: none; /* para que en portátil no se vaya para arriba el ratón con el pad */
+		color: white;
 		margin: 0;
 		width: 100%;
-		height: 100%;
+	}
+
+
+	@font-face {
+		font-family: GTA;
+		src: url("/fonts/gta-regular.woff") format("woff");
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap; /* primero carga el texto normal y luego cambia la fuente */
+  	}
+
+  	@font-face {
+		font-family: GTA;
+		src: url("/fonts/gta-bold.woff") format("woff");
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+  	}
+
+  	@font-face {
+		font-family: GTA;
+		src: url("/fonts/gta-semibold.woff") format("woff");
+		font-weight: 600;
+		font-style: normal;
+		font-display: swap;
+  	}
+
+	@font-face {
+		font-family: GTANarrow;
+		src: url("/fonts/gta-narrow.woff") format("woff");
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
 	}
 </style>
