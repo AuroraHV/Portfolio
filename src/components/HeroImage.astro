@@ -1,0 +1,22 @@
+---
+const { logo, background } = Astro.props;
+---
+
+<!-- Scale: zoom para luego alejar, 
+			block: ocupa todo el ancho disponible, 
+			overflow-hidden:oculta cualquier contenido que se desborde fuera del contenedor, 
+			fixed: posiciona fijo sin moverse con el scroll (no se ven los otros section) -->
+			<picture id="hero-key" class="h-screen scale-125 block overflow-hidden fixed">
+			<!-- cover: para que al reducir la ventana se ajuste a cubrirla como esté y que no recorte la img -->
+			<!-- absolute: img cubra todo, sino saldría una debajo de otra, solo puede llevarlo una, la del fondo -->
+				<img
+					id="hero-key-logo"
+					src={logo.src}
+					class="absolute w-full h-full object-cover" 
+				/>
+				<img
+					id="hero-key-background"
+					src={background.src}
+					class="w-full h-full object-cover"
+				/>
+			</picture>

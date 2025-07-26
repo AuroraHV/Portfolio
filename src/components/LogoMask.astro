@@ -1,0 +1,16 @@
+---
+---
+<!-- con CSS porque con tailwind es más complicado (para que la imagen esté dentro de las letras // clamp(valor min, preferido, max)-->
+<style>
+  #logo-mask {
+    background: white;
+    mask-image: url("/logo-stack.svg");
+    mask-position: center 50%;
+    mask-repeat: no-repeat;
+    mask-size: clamp(5000vh, 3500%, 0vh); 
+  }
+</style>
+
+<div id="logo-mask" class="fixed top-0 w-full h-screen">
+  <slot />
+</div>
